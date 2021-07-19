@@ -10,6 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Getter
 @Entity
@@ -41,6 +43,10 @@ public class User extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "circle_id", nullable = true)
     private Circle managingCircle;
+
+    @OneToMany
+    @JoinColumn(name = "user_circle_id", nullable = true)
+    private List<UserCircle> userCircles;
 
     private User(
             String email,

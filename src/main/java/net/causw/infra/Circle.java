@@ -7,6 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import java.util.List;
 
 
 @Getter
@@ -28,6 +31,10 @@ public class Circle extends BaseEntity{
 
     @OneToOne(mappedBy = "circle")
     private User manager;
+
+    @OneToMany
+    @JoinColumn(name = "user_circle_id", nullable = true)
+    private List<UserCircle> userCircles;
 
     private Circle(
             String name,
